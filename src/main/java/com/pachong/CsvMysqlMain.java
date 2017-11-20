@@ -52,8 +52,9 @@ public class CsvMysqlMain {
     }
 	public static void main(String[] d){
 		
-        String path = "D:\\spaga"; // 路径
- 		CsvMysqlMain.getFileList(path);
+       // String path = "D:\\spaga"; // 路径.
+		String path =initAPI.csvpath;
+				CsvMysqlMain.getFileList(path);
  		List<File> filepathlsit=CsvMysqlMain.filelist;
  		System.out.println("文件数"+filepathlsit.size());
 		 SQLHelper sqlexe=new SQLHelper();

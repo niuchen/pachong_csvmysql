@@ -7,18 +7,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.pachong.initAPI;
 
 public class C3P0Util {
 	static ComboPooledDataSource cpds = null;
 	static {
 		// 这里有个优点，写好配置文件，想换数据库，简单
 		// cpds = new ComboPooledDataSource("oracle");//这是oracle数据库
-		cpds = new ComboPooledDataSource("mysql");// 这是mysql数据库
-		cpds.setUser("root");// 用户姓名
-		cpds.setPassword("12345");// 用户密码
-		cpds.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/pachong?useUnicode=true&characterEncoding=utf-8");// MySQL数据库连接url
+		cpds = new ComboPooledDataSource(initAPI.DataSourcename);// 这是mysql数据库
+		cpds.setUser(initAPI.user);// 用户姓名
+		cpds.setPassword(initAPI.password);// 用户密码
+		cpds.setJdbcUrl(initAPI.jdbcurl);// MySQL数据库连接url
 		try {
-			cpds.setDriverClass("com.mysql.jdbc.Driver");
+			cpds.setDriverClass(initAPI.Driver);
 		} catch (PropertyVetoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
